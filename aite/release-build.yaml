@@ -2,18 +2,19 @@
 # ROS buildfarm release-build file
 ---
 abi_incompatibility_assumed: true
-jenkins_binary_job_label: buildagent_arm64 || dashing_binarydeb_ubv8
-jenkins_binary_job_priority: 89
-jenkins_binary_job_timeout: 720
-jenkins_source_job_priority: 79
+
+build_environment_variables:
+  RTI_NC_LICENSE_ACCEPTED: 'no'
+
+jenkins_binary_job_priority: 88
+jenkins_binary_job_timeout: 120
+jenkins_source_job_priority: 78
 jenkins_source_job_timeout: 30
 notifications:
-  emails:
-  - steven+build.ros2.org@openrobotics.org
-  - ros2-buildfarm-dashing@googlegroups.com
-  maintainers: true
+  committers: false
+  maintainers: false
 sync:
-  package_count: 500
+  package_count: 290
 repositories:
   keys:
   - |
@@ -85,7 +86,7 @@ target_repository: http://repo.ros2.org/ubuntu/building
 targets:
   ubuntu:
     bionic:
-      arm64:
+      amd64:
 type: release-build
 upload_credential_id: 1e7d4696-7fd4-4bc6-8c87-ebc7b6ce16e5
 version: 2

@@ -1,19 +1,17 @@
 %YAML 1.1
-# ROS buildfarm release-build file
+# ROS buildfarm source-build file
 ---
-abi_incompatibility_assumed: true
-jenkins_binary_job_label: buildagent_arm64 || eloquent_binarydeb_ubv8
-jenkins_binary_job_priority: 88
-jenkins_binary_job_timeout: 720
-jenkins_source_job_priority: 78
-jenkins_source_job_timeout: 30
+build_environment_variables:
+  NDDSHOME: /opt/rti.com/rti_connext_dds-5.3.1
+  ROS_PYTHON_VERSION: 3
+  RTI_NC_LICENSE_ACCEPTED: 'yes'
+build_tool: colcon
+jenkins_commit_job_priority: 58
+jenkins_job_timeout: 120
+jenkins_pull_request_job_priority: 48
 notifications:
-  emails:
-  - michael+build.ros2.org@openrobotics.org
-  - ros2-buildfarm-eloquent@googlegroups.com
-  maintainers: true
-sync:
-  package_count: 290
+  committers: false
+  maintainers: false
 repositories:
   keys:
   - |
@@ -79,13 +77,17 @@ repositories:
     =Vgio
     -----END PGP PUBLIC KEY BLOCK-----
   urls:
-  - http://repo.ros2.org/ubuntu/building
+  - http://repo.ros2.org/ubuntu/testing
   - http://repositories.ros.org/ubuntu/main
-target_repository: http://repo.ros2.org/ubuntu/building
+repository_blacklist:
+- ros_workspace
 targets:
   ubuntu:
     bionic:
-      arm64:
-type: release-build
-upload_credential_id: 1e7d4696-7fd4-4bc6-8c87-ebc7b6ce16e5
+      amd64:
+test_commits:
+  default: true
+test_pull_requests:
+  default: false
+type: source-build
 version: 2

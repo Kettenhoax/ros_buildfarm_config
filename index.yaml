@@ -13,6 +13,13 @@ distributions:
     #   ubv8: aite/release-bionic-arm64-build.yaml
     # source_builds:
     #   default: aite/source-build.yaml
+  eloquent:
+    doc_builds: {}
+    notification_emails:
+      - michael+build.ros2.org@openrobotics.org
+      - ros2-buildfarm-eloquent@googlegroups.com
+    release_builds:
+      default: eloquent/release-build.yaml
 jenkins_url: http://localhost:8080
 notification_emails:
   - marcel.zeilinger@ait.ac.at
